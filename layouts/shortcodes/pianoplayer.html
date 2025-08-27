@@ -1,0 +1,11 @@
+<div class="player">
+    <div class="container">
+        <img src='{{ .Get "image" }}' class="pianoRoll">
+        <div class="playhead"></div>
+    </div>
+    <div class="controls">
+        <button class="playBtn">▶ 再生</button>
+        <button class="stopBtn">■ 停止</button>
+    </div>
+    <audio src='{{ .Get "audio" }}'></audio>
+</div>

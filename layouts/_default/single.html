@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #222;
+            color: #eee;
+            text-align: center;
+        }
+
+        .player {
+            margin: 20px 0;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+            border: 1px solid #666;
+            background: #000;
+        }
+
+        .pianoRoll {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .playhead {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: red;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        {{ .Content }}
+    </main>
+
+    <script>
+        function bindPlayers() {
+            document.querySelectorAll(".player").forEach(player => {
+                const audio = player.querySelector("audio");
+                const playhead = player.querySelector(".playhead");
+                const img = player.querySelector("img");
+                const playBtn = player.querySelector(".playBtn");
+                const stopBtn = player.querySelector(".stopBtn");
+                let animationFrame;
+
+                playBtn.addEventListener("click", () => {
+                    audio.currentTime = 0;
+                    audio.play();
+                    startAnimation();
+                });
+
+                stopBtn.addEventListener("click", () => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    cancelAnimationFrame(animationFrame);
+                    playhead.style.left = "0px";
+                });
+
+                function startAnimation() {
+                    const duration = audio.duration;
+                    function step() {
+                        if (!audio.paused) {
+                            const width = img.clientWidth;
+                            const progress = audio.currentTime / duration;
+                            playhead.style.left = (progress * width) + "px";
+                            animationFrame = requestAnimationFrame(step);
+                        }
+                    }
+                    step();
+                }
+            });
+        }
+        window.onload = bindPlayers;
+    </script>
+</body>
+
+</html>
