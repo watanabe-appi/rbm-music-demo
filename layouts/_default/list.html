@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,14 +9,23 @@
             font-family: sans-serif;
             background: #222;
             color: #eee;
-            text-align: center;
+            margin: 2rem;
+            line-height: 1.6;
         }
 
+        h1,
+        h2,
+        h3 {
+            color: #fff;
+        }
+
+        /* プレイヤー本体 */
         .player {
             margin: 20px 0;
         }
 
-        .container {
+        /* プレイヤー内のコンテンツだけ中央寄せ */
+        .player .container {
             position: relative;
             display: inline-block;
             border: 1px solid #666;
@@ -41,6 +50,8 @@
 
         .controls {
             margin-top: 10px;
+            text-align: center;
+            /* ボタンだけ中央 */
         }
 
         button {
