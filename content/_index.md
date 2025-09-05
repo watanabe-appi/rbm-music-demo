@@ -3,12 +3,16 @@
 This page presents piano pieces automatically composed using a **Restricted Boltzmann Machine (RBM)**. You can view the piano-roll images and listen to the audio below.
 
 
+## Generated Musics
 
-## Available Pieces
+{{< pianoplayer image="2_measures_t_557.png" audio="2_measures_t_557.wav" >}}
 
-{{< pianoplayer image="piano1.png" audio="wav1.wav" >}}
+{{< pianoplayer image="8_measures_piano_roll.png" audio="8_measures.wav" >}}
 
-{{< pianoplayer image="piano2.png" audio="wav2.wav" >}}
+## Chord Progression
+
+{{< pianoplayer image="chord_progression_output_2_bars.png" audio="chord_progression.wav" >}}
+
 
 ## Method
 
